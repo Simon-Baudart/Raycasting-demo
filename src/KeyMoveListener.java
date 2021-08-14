@@ -4,7 +4,7 @@ import java.security.Key;
 
 public class KeyMoveListener implements KeyListener {
 
-    private Map map;
+    Map map;
 
     public KeyMoveListener(Map map) {
         this.map = map;
@@ -24,24 +24,10 @@ public class KeyMoveListener implements KeyListener {
             map.getPlayer().backward();
         }
         if(e.getKeyCode() == KeyEvent.VK_Q){
-            map.getPlayer().rotate((float)-0.1);
-
-            if(map.getPlayer().getAngle() > Math.PI * 2){
-                map.getPlayer().rotate(-2* Math.PI);
-            }
-
-            map.getPlayer().setDx((float) Math.cos(map.getPlayer().getAngle()) * 5);
-            map.getPlayer().setDy((float) Math.sin(map.getPlayer().getAngle()) * 5);
+            map.getPlayer().rotateLeft();
         }
         if(e.getKeyCode() == KeyEvent.VK_D){
-            map.getPlayer().rotate((float)0.1);
-
-            if(map.getPlayer().getAngle() < 0){
-                map.getPlayer().rotate(2* Math.PI);
-            }
-
-            map.getPlayer().setDx((float) Math.cos(map.getPlayer().getAngle()) * 5);
-            map.getPlayer().setDy((float) Math.sin(map.getPlayer().getAngle()) * 5);
+            map.getPlayer().rotateRight();
         }
 
         map.repaint();

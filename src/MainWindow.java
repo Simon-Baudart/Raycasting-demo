@@ -19,12 +19,18 @@ public class MainWindow extends JFrame {
         );
 
         this.mainContainer = this.getContentPane();
-        this.player = new Player();
-        this.map = new Map(player);
+        player = new Player();
+        map = new Map(player);
+        player.setMap(map);
         mainContainer.add(map);
 
         addKeyListener(new KeyMoveListener(map));
 
+        map.repaint();
+
         setVisible(true);
+
+
+
     }
 }
